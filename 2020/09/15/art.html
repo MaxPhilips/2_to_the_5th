@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      // variation on https://p5js.org/reference/#/p5/noise
+
+      let xoff = 0.0;
+
+      function setup() {
+        createCanvas(1280, 720);
+      }
+
+      function draw() {
+        background(220);
+
+        xoff = xoff + 0.01;
+        let n = noise(xoff) * width;
+
+        for (var i = 0; i < 5; i++) {
+          var magnitude = ((width / 2) - n) / 5;
+          var offset = -magnitude + 2 * magnitude * i / 5;
+          line(n + offset, 0, n + offset, height);
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
