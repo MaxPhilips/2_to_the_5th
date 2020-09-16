@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let x = 50, y = 50, w = 80, h = 40, delta = 10;
+
+      function setup() {
+        frameRate(1);
+      }
+
+      function draw() {
+        background(220);
+
+        w = w - delta;
+        h = h + delta;
+        if (random() > 0.94 || w < 30 || w > 90) { delta = -delta; }
+
+        customEllipse(50, 50, w, h);
+      }
+
+      // https://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
+      function customEllipse(x, y, w, h) {
+        x = x - w / 2.0;
+        y = y - h / 2.0;
+
+        var kappa = 0.5522848, ox = (w / 2) * kappa, oy = (h / 2) * kappa, xe = x + w, ye = y + h, xm = x + w / 2, ym = y + h / 2;
+
+        beginShape();
+        vertex(x, ym);
+        bezierVertex(x, ym - oy, xm - ox, y, xm, y);
+        bezierVertex(xm + ox, y, xe, ym - oy, xe, ym);
+        bezierVertex(xe, ym + oy, xm + ox, ye, xm, ye);
+        bezierVertex(xm - ox, ye, x, ym + oy, x, ym);
+        endShape();
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
