@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      function setup() {
+        noLoop();
+      }
+
+      function draw() {
+        background(255);
+        
+        range(230, 50);
+        range(190, 60);
+        range(150, 70);
+        range(110, 80);
+      }
+
+      // distance is a greyscale color
+      //   255 is very far away, 0 is very close
+      // altitude is an x-coordinate
+      //   0 is at the top, 100 is at the bottom
+      function range(distance, altitude) {
+        var slope = [-1, -1, -1, -1, 0, 0, 1], peak = random(100);
+
+        stroke(distance);
+
+        for(var x = -20; x < width; x++) {
+          if (x > peak) {
+            slope = [-1, 0, 0, 1, 1, 1, 1];
+          }
+
+          altitude = altitude + random(slope);
+          line(x, altitude, x, height);
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
