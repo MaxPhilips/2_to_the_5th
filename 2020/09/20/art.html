@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      function setup() {
+        colorMode(HSB);
+      }
+
+      function draw() {        
+        for (var x = 0; x < width; x++) {
+          for (var y = 0; y < height; y++) {
+            var hue = goofyNoise(x, y);
+            stroke(hue * 360, 50 + hue * 50, 80);
+
+            point(x, y);
+          }
+        }
+      }
+
+      function goofyNoise(x, y) {
+        return noise(x * random(0.01, 0.02), y * random(0.01, 0.02));
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
