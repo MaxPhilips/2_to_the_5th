@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseScale = 0.015;
+
+      function setup() {
+        createCanvas(500, 500);
+      }
+
+      function draw() {
+        background(255);
+
+        for (var x = width / 50; x < width; x = x + width / 50) {
+          for (var y = height / 50; y < height; y = y + width / 50) {
+            var angle = map(noise((mouseX + x) * noiseScale, (mouseY + y) * noiseScale), 0, 1, 0, TWO_PI);
+            var v = p5.Vector.fromAngle(angle, width / 50);
+
+            push();
+            translate(x, y);
+            line(0, 0, v.x, v.y);
+            pop();
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
