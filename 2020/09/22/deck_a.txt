@@ -1,0 +1,32 @@
+Deck
+4 Lovestruck Beast
+4 Edgewall Innkeeper
+4 Bonecrusher Giant
+4 Ketria Triome
+4 Fae of Wishes
+4 Cragcrown Pathway
+4 Lucky Clover
+4 Beanstalk Giant
+4 Brazen Borrower
+4 Riverglide Pathway
+4 Escape to the Wilds
+2 Temple of Mystery
+6 Forest
+3 Mountain
+3 Island
+1 Spikefield Hazard
+1 Scorching Dragonfire
+
+Sideboard
+1 Stern Dismissal
+2 Negate
+1 Fling
+1 Ugin, the Spirit Dragon
+1 Once and Future
+1 Soul-Guide Lantern
+1 Redcap Melee
+1 Storm's Wrath
+1 Shadowspear
+1 Cinderclasm
+1 Lullmage's Domination
+3 Confounding Conundrum
