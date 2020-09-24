@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+      // construct the sierpinski triangle via the chaos game
+      // https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle#Chaos_game
+
+      let vertexTop, vertexBottomLeft, vertexBottomRight, pointToDraw;
+
+      function setup() {
+        createCanvas(693, 600);
+
+        // Take three points in a plane to form a triangle, you need not draw it.
+        vertexTop = createVector(width / 2.0, 0);
+        vertexBottomLeft = createVector(0, height);
+        vertexBottomRight = createVector(width, height);
+
+        // Randomly select any point inside the triangle and consider that your current position.
+        // https://www.cs.princeton.edu/~funk/tog02.pdf
+        var sqrtR1 = Math.sqrt(random()), r2 = random();
+        var pX = (1 - sqrtR1) * vertexTop.x + sqrtR1 * (1 - r2) * vertexBottomLeft.x + sqrtR1 * r2 * vertexBottomRight.x;
+        var pY = (1 - sqrtR1) * vertexTop.y + sqrtR1 * (1 - r2) * vertexBottomLeft.y + sqrtR1 * r2 * vertexBottomRight.y;
+        pointToDraw = createVector(pX, pY);
+      }
+
+      function draw() {
+        // Randomly select any one of the three vertex points.
+        var vertexToUse = random([vertexTop, vertexBottomLeft, vertexBottomRight]);
+
+        // Move half the distance from your current position to the selected vertex.
+        pointToDraw = p5.Vector.lerp(pointToDraw, vertexToUse, 0.5);
+
+        // Plot the current position.
+        point(pointToDraw);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
