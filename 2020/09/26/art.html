@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseScale = 0.015, xOff = 0;
+
+      function setup() {
+        createCanvas(400, 400);
+      }
+
+      function draw() {
+        background(255);
+
+        for (var x = width / 20; x < width; x = x + width / 20) {
+          for (var y = height / 20; y < height; y = y + width / 20) {
+            var magnitude = noise((x + xOff) * noiseScale, y * noiseScale);
+
+            circle(x, y, magnitude * 25)
+          }
+        }
+
+        xOff += width / 20;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
