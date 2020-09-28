@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      function setup() {
+        createCanvas(400, 400);
+        noFill();
+        noLoop();
+      }
+
+      function draw() {
+        for (var i = 36; i > 6; i -= 0.5) { edgedCircle(i, 100 - (30 - (i - 6))); }
+
+        stroke('red');
+        strokeWeight(3);
+        edgedCircle(random(6, 36), 100 - (30 - (random(6, 36) - 6)));
+      }
+
+      function edgedCircle(vertices, radius) {
+        push();
+        translate(randomGaussian(width / 2, width / 32), height / 2);
+
+        var anglePerVertex = TWO_PI / vertices, controlArray = [];
+
+        for (var i = 1; i < vertices; i++) {
+          controlArray.push(createVector(sin(anglePerVertex * i), cos(anglePerVertex * i)).mult(abs(randomGaussian(radius, radius * 0.04))));
+        }
+
+        beginShape();
+        controlArray.forEach(item => {vertex(item.x, item.y)});
+        endShape(CLOSE);
+        pop();
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
