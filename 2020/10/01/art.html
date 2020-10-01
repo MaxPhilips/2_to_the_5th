@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseXScale = 0.015, noiseYScale = 0.015, xOff = 0, xDelta = 0, yOff = 0;
+
+      function setup() {
+
+      }
+
+      function draw() {
+        smoke(xOff, yOff, xDelta);
+
+        xDelta += TWO_PI / 72;
+        xOff = xOff + 1.6 * sin(xDelta) + 0.9 * sin(1.7 * (xDelta - 5)) + 0.3 * sin(10 * xDelta);
+        yOff += random(3, 5);
+      }
+
+      function smoke(xOff, yOff, xDelta) {
+        for (var x = 0; x < width; x += 1) {
+          for (var y = 0; y < height; y += 1) {
+            var noiseValue = noise((x + xOff) * noiseXScale, (y + yOff) * noiseYScale);
+            var color = map(noiseValue, 0, 1, 0, 255);
+            var angle = map(noiseValue, 0, 1, 0, TWO_PI);
+
+            push();
+            stroke(color);
+            translate(x, y);
+            rotate(angle);
+            line(0, 0, 10, 0);
+            pop();
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
