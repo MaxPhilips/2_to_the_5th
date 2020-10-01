@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseScale = 0.015;
+
+      function setup() {
+        createCanvas(200, 200);
+      }
+
+      function draw() {
+        for (var x = 0; x < width; x += 1) {
+          for (var y = 0; y < height; y += 1) {
+            var noiseValue = noise(x * noiseScale, y * noiseScale);
+            var color = map(noiseValue, 0, 1, 0, 255);
+            var angle = map(noiseValue, 0, 1, 0, TWO_PI);
+
+            push();
+            stroke(color);
+            translate(x, y);
+            rotate(angle);
+            line(0, 0, 10, 0);
+            pop();
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
