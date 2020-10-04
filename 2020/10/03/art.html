@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      function setup() {
+        createCanvas(500, 500);
+        noLoop();
+        strokeCap(SQUARE);
+      }
+
+      function draw() {
+        for (let i = 0; i < 60; i++) {
+          fancyLine(randomGaussian(height / 2, height / 12), color(random(255), random(255), random(255)), color(random(255), random(255), random(255)));
+        }
+      }
+
+      function fancyLine(y, c1, c2) {
+        let mid1 = randomGaussian(height / 5, height / 32), mid2 = randomGaussian(height * 0.8, height / 32);
+
+        strokeWeight(10 - map(abs(height / 2 - y), 0, height / 2, 0, 10));
+
+        stroke(c1);
+        line(0, y, mid1, y);
+        stroke(lerpColor(c1, c2, 0.5));
+        line(mid1, y, mid2, y);
+        stroke(c2);
+        line(mid2, y, width, y);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
