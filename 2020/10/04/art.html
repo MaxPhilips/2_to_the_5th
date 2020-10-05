@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseRedScale, noiseGreenScale, noiseBlueScale;
+
+      function setup() {
+        createCanvas(400, 400);
+        noLoop();
+
+        noiseRedScale = random(0.01, 0.03);
+        noiseGreenScale = random(0.01, 0.03);
+        noiseBlueScale = random(0.01, 0.03);
+      }
+
+      function draw() {
+        for (var x = 0; x < width; x += 1) {
+          for (var y = 0; y < height; y += 1) {
+            var noiseRedValue = noise(x * noiseRedScale, y * noiseRedScale), noiseGreenValue = noise(x * noiseGreenScale, y * noiseGreenScale), noiseBlueValue = noise(x * noiseBlueScale, y * noiseBlueScale);
+
+            stroke(color(255 * noiseRedValue, 255 * noiseGreenValue, 255 * noiseBlueValue, 100));
+            point(x, y);
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
