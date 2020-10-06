@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let angleOut, angleIn, angleOutDelta, angleInDelta;
+
+      function setup() {
+        createCanvas(400, 400);
+        frameRate();
+
+        angleOut = HALF_PI;
+        angleIn = HALF_PI;
+        angleOutDelta = random(QUARTER_PI / 8, QUARTER_PI / 2);
+        angleInDelta = random(QUARTER_PI / 8, QUARTER_PI / 2);
+      }
+
+      function draw() {
+        var xOut = 190 * sin(angleOut), yOut = 190 * cos(angleOut), xIn = 50 * sin(angleIn), yIn = 50 * cos(angleOut);
+
+        line(xOut + width / 2, yOut + height / 2, xIn + width / 2, yIn + height / 2);
+
+        angleOut += angleOutDelta;
+        angleIn += angleInDelta;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
