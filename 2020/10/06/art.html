@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let angle, iterations, outside, inside;
+
+      function setup() {
+        createCanvas(400, 400);
+        frameRate(4);
+        noFill();
+
+        angle = PI, iterations = random(12, 48), outside = random(140, 190), inside = random(50, 120);
+      }
+
+      function draw() {
+        background('white');
+        translate(width / 2, height / 2);
+
+        for (var i = 0; i < iterations; i++) {
+          quad(outside * sin(angle), outside * cos(angle), inside * sin(angle - HALF_PI), inside * cos(angle - HALF_PI), inside * sin(angle - PI), inside * cos(angle - PI), inside * sin(angle - HALF_PI - PI), inside * cos(angle - HALF_PI - PI));
+
+          angle -= TWO_PI / iterations;
+        }
+
+        outside += random(-3, 3);
+        inside += random(-3, 3);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
