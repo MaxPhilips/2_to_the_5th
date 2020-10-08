@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      function setup() {
+        createCanvas(400, 400);
+        noLoop();
+        noStroke();
+        colorMode(HSB);
+      }
+
+      function draw() {
+        for (var i = 0; i < 3; i++) {
+          var tallness = 40;
+
+          for (var y = 0.6 * height; y < height; y += height / 50) {
+            for (var x = random(0, width / 40); x < width; x += random(width / 80 - 1, width / 80 + 1)) {
+              blade(x, y, tallness);
+            }
+
+            tallness += 1;
+          }
+        }
+      }
+
+      function blade(x, y, tallnessIn) {
+        var angle = randomGaussian(0, 2), tallness = randomGaussian(tallnessIn, 0.05 * tallnessIn);
+
+        fill(randomGaussian(100, 10), randomGaussian(100, 0), randomGaussian(80, 5));
+
+        triangle(x - (tallness / 40), y, x + angle, y - tallness, x + (tallness / 40), y);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
