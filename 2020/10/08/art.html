@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let angle, radius;
+
+      function setup() {
+        createCanvas(400, 400);
+        noStroke();
+        colorMode(HSB);
+        angle = 3 * PI, radius = 0.7 * height;
+      }
+
+      function draw() {
+        if (radius < 0) { return; }
+
+        translate(width / 2, height / 2);
+
+        fill(angle * 360 / TWO_PI % 360, 75, 75);
+
+        circle(radius * sin(angle), radius * cos(angle), map(radius, 0, 0.7 * height, 2, 20));
+
+        angle += PI / 24;
+        radius -= 0.5;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
