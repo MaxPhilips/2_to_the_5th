@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseScale = 0.009;
+
+      function setup() {
+        createCanvas(3000, 2400);
+        angleMode(DEGREES);
+      }
+
+      function draw() {
+        let img = createImage(width, height);
+        img.loadPixels();
+
+        for (let i = 0; i < img.width; i++) {
+          for (let j = 0; j < img.height; j++) {
+            img.set(i, j, color((sin(i) + 1) * 64 + (sin(i * j) + 1) * 64));
+          }
+        }
+
+        img.updatePixels();
+
+        image(img, 0, 0);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
