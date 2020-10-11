@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let noiseScale = 0.015;
+
+      function setup() {
+        createCanvas(400, 400);
+        noLoop();
+      }
+
+      function draw() {
+        for (var i = 0; i < width; i++) {
+          for (var j = 0; j < height; j++) {
+            let noiseValue = noise(i * noiseScale, j * noiseScale);
+            if (noiseValue > 0.47 && noiseValue <= 0.53) {
+              stroke(75);
+              point(i, j);
+            } else if (noiseValue > 0.37 && noiseValue <= 0.47) {
+              stroke(0);
+              point(i, j);
+            } else if (noiseValue > 0.53 && noiseValue <= 0.63) {
+              stroke(150);
+              point(i, j);
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
