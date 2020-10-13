@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@7.5.1/dist/math.min.js"></script>
+    <script>
+      // cerner_2^5_2020
+      // https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/index.php/Mandelbrot_set
+
+      function setup() {
+        createCanvas(350, 200);
+        colorMode(HSB);
+        noLoop();
+      }
+
+      function draw() {
+        translate(250, 100);
+
+        for (var x = -2.5; x < 1; x += 0.01) {
+          for (var y = -1; y < 1; y += 0.01) {
+            let c = math.complex(x, y), z = math.complex(0);
+
+            stroke('black');
+
+            for (var i = 0; i < 1000; i++) {
+              if (z.re * z.re + z.im * z.im > 4) { stroke(strokeColor(i += 1000)); }
+
+              z = math.add(math.multiply(z, z), c);
+            }
+
+            point(x * 100, y * 100);
+          }
+        }
+      }
+
+      function strokeColor(i) {
+        return color(log(i - 1000) * 100, 85, 85);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
