@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script>
+      // cerner_2^5_2020
+
+      let r, g, b, scale = 0.6;
+
+      function setup() {
+        createCanvas(600, 600);
+        noFill();
+        noLoop();
+        r = random(255);
+        g = random(255);
+        b = random(255);
+      }
+
+      function draw() {
+        recursiveSquare(width / 4, height / 4, width / 2);
+      }
+
+      function recursiveSquare(x, y, s) {
+        if (s < 2) { return; }
+
+        square(x, y, s);
+        if (r++ > 255) { r = 0; }
+        if (g++ > 255) { g = 0; }
+        if (b++ > 255) { b = 0; }
+        stroke(color(r, g, b));
+
+        recursiveSquare(x - scale / 2 * s, y - scale / 2 * s, scale * s);
+        recursiveSquare(x + (1 - scale / 2) * s, y - scale / 2 * s, scale * s);
+        recursiveSquare(x + (1 - scale / 2) * s, y + (1 - scale / 2) * s, scale * s);
+        recursiveSquare(x - scale / 2 * s, y + (1 - scale / 2) * s, scale * s);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
